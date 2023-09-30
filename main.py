@@ -1,9 +1,7 @@
 import time
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-
 from selenium.webdriver.common.keys import Keys
 
 
@@ -15,14 +13,15 @@ class InstagramBot:
         self.driver = webdriver.Chrome(service=self.service)
 
     def Login(self):
+        driver = self.driver
         self.driver.get('https://www.instagram.com/')
-        time.sleep(2)
+        time.sleep(15)
 
         user_element = self.driver.find_element(By.XPATH, "//input[@name='username']")
         user_element.clear()
         user_element.send_keys(self.username)
 
-        password_element = self.driver.find_element(By.XPATH, "//input[@name='password']")
+        password_element = self.driver.find_element(By.XPATH, "//input[@name='password']")  
         password_element.clear()
         password_element.send_keys(self.password)
         password_element.send_keys(Keys.RETURN)
